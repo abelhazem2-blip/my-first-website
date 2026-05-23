@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zentro Bot — The Best Bot You Can Use</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--bg:#03040a;--bg2:#07090f;--bg3:#0c0e1a;--cyan:#00d4ff;--cyan2:#00a8cc;--purple:#7c3aed;--purple2:#5b21b6;--pink:#a855f7;--text:#e2e8f0;--text2:#7c8ba1;--border:rgba(0,212,255,0.12);}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth;}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4;}
+a{color:var(--cyan);text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(3,4,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:2px;}
+.logo-tri{width:38px;height:38px;background:linear-gradient(135deg,var(--cyan),var(--purple));clip-path:polygon(50% 0%,100% 100%,0% 100%);animation:logoPulse 3s ease-in-out infinite;flex-shrink:0;}
+@keyframes logoPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(0,212,255,0.6));}50%{filter:drop-shadow(0 0 22px rgba(0,212,255,1));}}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{font-size:14px;font-weight:600;letter-spacing:1.5px;color:var(--text2);text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--cyan);}
+.btn-invite{padding:10px 24px;border-radius:3px;border:none;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;text-decoration:none;transition:box-shadow .3s;box-shadow:0 0 20px rgba(0,212,255,0.2);}
+.btn-invite:hover{box-shadow:0 0 35px rgba(0,212,255,0.5);}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 5% 0;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 75% 50%,rgba(124,58,237,0.18) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 15% 85%,rgba(0,212,255,0.1) 0%,transparent 50%);}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
+.hero-content{position:relative;z-index:2;max-width:640px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:2px;border:1px solid var(--cyan);color:var(--cyan);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp .6s ease both;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(38px,6vw,74px);font-weight:900;line-height:1.05;color:#fff;letter-spacing:-1px;animation:fadeUp .7s ease .1s both;}
+.accent{background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:18px;color:var(--text2);line-height:1.7;margin:1.5rem 0 2.5rem;animation:fadeUp .7s ease .2s both;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s ease .3s both;}
+.btn-primary{padding:14px 32px;border-radius:3px;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;border:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(0,212,255,0.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,212,255,0.5);}
+.btn-ghost{padding:14px 32px;border-radius:3px;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;background:transparent;color:var(--text2);border:1px solid rgba(255,255,255,0.15);transition:all .2s;}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:min(460px,44vw);aspect-ratio:1;animation:float 6s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(-50%);}50%{transform:translateY(-52%) translateX(-8px);}}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(0,212,255,0.12);animation:rotate linear infinite;}
+.r1{inset:0;animation-duration:20s;}
+.r2{inset:8%;animation-duration:15s;animation-direction:reverse;border-color:rgba(124,58,237,0.18);}
+.r3{inset:18%;animation-duration:28s;border-color:rgba(168,85,247,0.1);}
+@keyframes rotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.center-glow{position:absolute;inset:28%;background:linear-gradient(135deg,rgba(0,212,255,0.12),rgba(124,58,237,0.12));border-radius:50%;border:1px solid rgba(0,212,255,0.3);display:flex;align-items:center;justify-content:center;font-size:clamp(36px,4vw,64px);box-shadow:0 0 80px rgba(0,212,255,0.18),inset 0 0 40px rgba(0,212,255,0.08);}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat{background:var(--bg2);padding:2.5rem 2rem;text-align:center;}
+.stat .num{font-family:'Orbitron',sans-serif;font-size:34px;font-weight:900;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat .lbl{font-size:12px;color:var(--text2);letter-spacing:2.5px;text-transform:uppercase;margin-top:.3rem;}
+section{padding:7rem 5%;}
+.slabel{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:1rem;}
+.stitle{font-family:'Orbitron',sans-serif;font-size:clamp(26px,4vw,46px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem;}
+.sdesc{font-size:17px;color:var(--text2);max-width:520px;line-height:1.7;margin-bottom:4rem;}
+#features{background:var(--bg2);position:relative;overflow:hidden;}
+#features::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,0.07) 0%,transparent 70%);pointer-events:none;}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);}
+.feat-card{background:var(--bg2);padding:2.5rem;position:relative;overflow:hidden;transition:background .3s;}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s;}
+.feat-card:hover{background:var(--bg3);}
+.feat-card:hover::before{opacity:1;}
+.ficon{width:50px;height:50px;border-radius:8px;background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(124,58,237,0.1));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.5rem;transition:all .3s;}
+.feat-card:hover .ficon{box-shadow:0 0 20px rgba(0,212,255,0.2);}
+.feat-card h3{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:#fff;letter-spacing:1px;margin-bottom:.75rem;}
+.feat-card p{font-size:15px;color:var(--text2);line-height:1.6;}
+#commands{background:var(--bg);}
+.csearch{width:100%;max-width:480px;background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:13px 18px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:16px;outline:none;margin-bottom:2rem;display:block;transition:border-color .2s;}
+.csearch:focus{border-color:var(--cyan);}
+.csearch::placeholder{color:var(--text2);}
+.ccats{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;}
+.ccat{padding:7px 16px;border-radius:2px;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--border);color:var(--text2);background:transparent;transition:all .2s;font-family:'Rajdhani',sans-serif;}
+.ccat:hover,.ccat.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.05);}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);}
+.ccard{background:var(--bg2);padding:1.2rem 1.5rem;transition:background .2s;}
+.ccard:hover{background:var(--bg3);}
+.ccard .cname{font-family:'Orbitron',sans-serif;font-size:12px;color:var(--cyan);margin-bottom:.35rem;}
+.ccard .cdesc{font-size:14px;color:var(--text2);line-height:1.5;}
+.ccard .cperm{font-size:11px;color:var(--purple);margin-top:.4rem;letter-spacing:.5px;}
+#premium{background:var(--bg2);text-align:center;position:relative;overflow:hidden;}
+#premium::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,58,237,0.07) 0%,transparent 70%);pointer-events:none;}
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;max-width:860px;margin:0 auto;position:relative;z-index:1;}
+.pcard{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:2.5rem;text-align:left;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+.pcard.hot{border-color:var(--cyan);box-shadow:0 0 40px rgba(0,212,255,0.12);}
+.pcard.hot::before{content:'POPULAR';position:absolute;top:1rem;right:1rem;font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;padding:4px 10px;background:linear-gradient(135deg,var(--cyan),var(--purple));border-radius:2px;color:#fff;}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.pname{font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;color:var(--text2);text-transform:uppercase;margin-bottom:1rem;}
+.pprice{font-family:'Orbitron',sans-serif;font-size:46px;font-weight:900;color:#fff;line-height:1;}
+.pprice span{font-size:18px;color:var(--text2);}
+.pperiod{font-size:14px;color:var(--text2);margin-bottom:2rem;}
+.plist{list-style:none;margin-bottom:2rem;}
+.plist li{padding:.55rem 0;font-size:15px;color:var(--text);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.plist li:last-child{border:none;}
+.plist li i{color:var(--cyan);font-size:12px;flex-shrink:0;}
+.plist li.no i{color:var(--text2);}
+.plist li.no{color:var(--text2);}
+.pbtn{width:100%;padding:13px;border-radius:3px;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;transition:all .3s;text-decoration:none;display:block;text-align:center;}
+.pbtn.g{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 0 20px rgba(0,212,255,0.25);}
+.pbtn.g:hover{box-shadow:0 0 40px rgba(0,212,255,0.5);transform:translateY(-1px);}
+.pbtn.o{background:transparent;color:var(--text2);border:1px solid var(--border);}
+.pbtn.o:hover{border-color:var(--cyan);color:var(--cyan);}
+#about{background:var(--bg);}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.avis{position:relative;aspect-ratio:1;max-width:380px;}
+.abox{position:absolute;border:1px solid var(--border);border-radius:4px;background:var(--bg2);}
+.abox.main{inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;}
+.abox.tl{top:-10px;left:-10px;width:38%;height:38%;border-color:rgba(0,212,255,0.25);}
+.abox.br{bottom:-10px;right:-10px;width:48%;height:28%;border-color:rgba(124,58,237,0.25);}
+.atxt h2{font-family:'Orbitron',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:900;color:#fff;margin-bottom:1.5rem;line-height:1.2;}
+.atxt p{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:1.25rem;}
+.tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;}
+.tag{padding:5px 14px;border-radius:2px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);color:var(--text2);}
+.cta-wrap{background:var(--bg2);padding:8rem 5%;text-align:center;border-top:1px solid var(--border);position:relative;overflow:hidden;}
+.cta-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(0,212,255,0.05) 0%,transparent 60%);}
+.cta-wrap h2{font-family:'Orbitron',sans-serif;font-size:clamp(26px,5vw,54px);font-weight:900;color:#fff;margin-bottom:1rem;position:relative;}
+.cta-wrap p{font-size:18px;color:var(--text2);margin-bottom:3rem;position:relative;}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 5% 2rem;}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fbrand p{font-size:14px;color:var(--text2);line-height:1.7;max-width:250px;margin-top:1rem;}
+.fcol h4{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;margin-bottom:1.25rem;}
+.fcol ul{list-style:none;}
+.fcol li{margin-bottom:.7rem;}
+.fcol a{font-size:15px;color:var(--text2);transition:color .2s;}
+.fcol a:hover{color:var(--cyan);}
+.fbot{border-top:1px solid var(--border);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.fbot p{font-size:14px;color:var(--text2);}
+.socials{display:flex;gap:.75rem;}
+.socials a{width:36px;height:36px;border-radius:3px;border:1px solid var(--border);color:var(--text2);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;}
+.socials a:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.2);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.hero-visual,.avis{display:none;}.stats{grid-template-columns:repeat(2,1fr);}.agrid{grid-template-columns:1fr;}.fgrid{grid-template-columns:1fr 1fr;}.nav-links{display:none;}}
+@media(max-width:600px){.stats{grid-template-columns:1fr 1fr;}.fgrid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="logo-tri"></div>ZENTRO</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#commands">Commands</a>
+    <a href="#premium">Premium</a>
+    <a href="#about">About</a>
+  </div>
+  <a href="https://discord.com/oauth2/authorize" class="btn-invite">Invite Bot</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Now Live on Discord</div>
+    <h1>The <span class="accent">Best Bot</span><br>You Can Use</h1>
+    <p>Zentro brings moderation, leveling, economy, music, AI chat, tickets, anti-nuke and much more — all in one powerful Discord bot.</p>
+    <div class="hero-btns">
+      <a href="https://discord.com/oauth2/authorize" class="btn-primary">Add to Discord</a>
+      <a href="#features" class="btn-ghost">Explore Features</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="center-glow">⚡</div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="num" data-target="5000">0</div><div class="lbl">Servers</div></div>
+  <div class="stat"><div class="num" data-target="250000">0</div><div class="lbl">Users</div></div>
+  <div class="stat"><div class="num" data-target="80">0</div><div class="lbl">Commands</div></div>
+  <div class="stat"><div class="num" data-target="99">0</div><div class="lbl">% Uptime</div></div>
+</div>
+
+<section id="features">
+  <div class="slabel">What We Offer</div>
+  <div class="stitle">Everything Your<br>Server <span class="accent">Needs</span></div>
+  <div class="sdesc">Zentro packs every essential server tool into one always-online, blazing-fast bot.</div>
+  <div class="feat-grid reveal">
+    <div class="feat-card"><div class="ficon">🛡️</div><h3>Moderation</h3><p>Ban, kick, mute, warn, softban, lockdown and full anti-nuke protection — keeping your server safe 24/7.</p></div>
+    <div class="feat-card"><div class="ficon">⭐</div><h3>Leveling</h3><p>Full XP system with level-up roles, leaderboards, custom announcement channels and role stacking.</p></div>
+    <div class="feat-card"><div class="ficon">💰</div><h3>Economy</h3><p>Wallet, bank, daily rewards, work, rob, shop, blackjack — a complete coin economy for your community.</p></div>
+    <div class="feat-card"><div class="ficon">🎵</div><h3>Music</h3><p>High-quality YouTube playback with queue management, skip, pause, volume control and now playing.</p></div>
+    <div class="feat-card"><div class="ficon">🤖</div><h3>AI Chat</h3><p>Powered by Claude AI — ping or reply to Zentro for intelligent, context-aware conversations.</p></div>
+    <div class="feat-card"><div class="ficon">🎫</div><h3>Tickets</h3><p>Full support ticket system with HTML transcripts, staff roles and auto logging.</p></div>
+    <div class="feat-card"><div class="ficon">🎉</div><h3>Giveaways</h3><p>Easy giveaways with flexible durations (minutes to days), winner selection and reroll.</p></div>
+    <div class="feat-card"><div class="ficon">🎂</div><h3>Birthdays</h3><p>Automatic birthday shoutouts, birthday roles and upcoming birthday lists.</p></div>
+    <div class="feat-card"><div class="ficon">📋</div><h3>Applications</h3><p>Staff, partnership and custom application forms with review buttons and DM notifications.</p></div>
+  </div>
+</section>
+
+<section id="commands">
+  <div class="slabel">Command Reference</div>
+  <div class="stitle">All <span class="accent">Commands</span></div>
+  <div class="sdesc">Browse all 80+ slash commands. Use <code style="color:var(--cyan);background:var(--bg2);padding:2px 8px;border-radius:3px">/</code> to access them all.</div>
+  <input class="csearch" id="cs" placeholder="🔍  Search commands..." oninput="fc()">
+  <div class="ccats">
+    <button class="ccat active" onclick="sc('all',this)">All</button>
+    <button class="ccat" onclick="sc('mod',this)">Moderation</button>
+    <button class="ccat" onclick="sc('level',this)">Leveling</button>
+    <button class="ccat" onclick="sc('econ',this)">Economy</button>
+    <button class="ccat" onclick="sc('music',this)">Music</button>
+    <button class="ccat" onclick="sc('fun',this)">Fun</button>
+    <button class="ccat" onclick="sc('util',this)">Utility</button>
+  </div>
+  <div class="cgrid" id="cg"></div>
+</section>
+
+<section id="premium">
+  <div class="slabel" style="text-align:center">Upgrade</div>
+  <div class="stitle" style="text-align:center;max-width:100%">Power Up with <span class="accent">Premium</span></div>
+  <div class="sdesc" style="text-align:center;margin:1rem auto 3rem">Unlock exclusive features and support Zentro's development.</div>
+  <div class="pcards">
+    <div class="pcard">
+      <div class="pname">Free</div>
+      <div class="pprice"><span>$</span>0</div>
+      <div class="pperiod">forever</div>
+      <ul class="plist">
+        <li><i class="fas fa-check"></i> All slash commands</li>
+        <li><i class="fas fa-check"></i> Moderation tools</li>
+        <li><i class="fas fa-check"></i> Leveling system</li>
+        <li><i class="fas fa-check"></i> Giveaways & tickets</li>
+        <li class="no"><i class="fas fa-times"></i> AI Chat</li>
+        <li class="no"><i class="fas fa-times"></i> Priority support</li>
+        <li class="no"><i class="fas fa-times"></i> Custom bot status</li>
+      </ul>
+      <a href="https://discord.com/oauth2/authorize" class="pbtn o">Get Started Free</a>
+    </div>
+    <div class="pcard hot">
+      <div class="pname">Premium</div>
+      <div class="pprice"><span>$</span>10</div>
+      <div class="pperiod">per month</div>
+      <ul class="plist">
+        <li><i class="fas fa-check"></i> Everything in Free</li>
+        <li><i class="fas fa-check"></i> AI Chat (Claude-powered)</li>
+        <li><i class="fas fa-check"></i> Priority support</li>
+        <li><i class="fas fa-check"></i> Custom bot status</li>
+        <li><i class="fas fa-check"></i> Advanced anti-nuke</li>
+        <li><i class="fas fa-check"></i> Unlimited giveaways</li>
+        <li><i class="fas fa-check"></i> Premium badge in bot</li>
+      </ul>
+      <a href="https://discord.gg/" class="pbtn g">Get Premium</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="agrid">
+    <div class="avis reveal">
+      <div class="abox main">⚡</div>
+      <div class="abox tl"></div>
+      <div class="abox br"></div>
+    </div>
+    <div class="atxt reveal">
+      <div class="slabel">About Zentro</div>
+      <h2>Built for <span class="accent">Serious</span> Servers</h2>
+      <p>Zentro was built from the ground up to give Discord server owners the most powerful, reliable, and feature-rich bot available — without the complexity.</p>
+      <p>From small gaming communities to large public servers, Zentro scales with your needs. Every feature is designed with performance and ease of use in mind.</p>
+      <div class="tags">
+        <span class="tag">⚡ Fast</span>
+        <span class="tag">🔒 Secure</span>
+        <span class="tag">🛠️ Reliable</span>
+        <span class="tag">🤖 AI-Powered</span>
+        <span class="tag">24/7 Online</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap reveal">
+  <h2>Ready to <span class="accent">Level Up</span><br>Your Server?</h2>
+  <p>Join thousands of servers already using Zentro Bot.</p>
+  <div class="hero-btns" style="justify-content:center;position:relative;">
+    <a href="https://discord.com/oauth2/authorize" class="btn-primary">Add Zentro to Discord</a>
+    <a href="https://discord.gg/" class="btn-ghost">Join Support Server</a>
+  </div>
+</div>
+
+<footer>
+  <div class="fgrid">
+    <div class="fbrand">
+      <div class="nav-logo"><div class="logo-tri" style="width:30px;height:30px"></div>ZENTRO</div>
+      <p>The best Discord bot for moderation, leveling, economy, music and more.</p>
+    </div>
+    <div class="fcol"><h4>Bot</h4><ul><li><a href="#features">Features</a></li><li><a href="#commands">Commands</a></li><li><a href="#premium">Premium</a></li><li><a href="https://discord.com/oauth2/authorize">Invite</a></li></ul></div>
+    <div class="fcol"><h4>Support</h4><ul><li><a href="#">Documentation</a></li><li><a href="#">Status</a></li><li><a href="https://discord.gg/">Discord Server</a></li><li><a href="#">Bug Report</a></li></ul></div>
+    <div class="fcol"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Zentro Bot. All rights reserved.</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cmds=[
+  {name:'/kick',desc:'Kick a member from the server',cat:'mod',perm:'Kick Members'},
+  {name:'/ban',desc:'Permanently ban a member',cat:'mod',perm:'Ban Members'},
+  {name:'/softban',desc:'Ban + unban to delete messages',cat:'mod',perm:'Ban Members'},
+  {name:'/unban',desc:'Unban a user by ID',cat:'mod',perm:'Ban Members'},
+  {name:'/mute',desc:'Timeout a member (10m, 1h, 1d, 3d)',cat:'mod',perm:'Moderate Members'},
+  {name:'/unmute',desc:'Remove timeout from a member',cat:'mod',perm:'Moderate Members'},
+  {name:'/warn',desc:'Warn a member and log the reason',cat:'mod',perm:'Moderate Members'},
+  {name:'/warnings',desc:'View all warnings for a member',cat:'mod',perm:'Moderate Members'},
+  {name:'/clearwarnings',desc:'Clear all warnings for a member',cat:'mod',perm:'Moderate Members'},
+  {name:'/lock',desc:'Lock a channel',cat:'mod',perm:'Manage Channels'},
+  {name:'/unlock',desc:'Unlock a channel',cat:'mod',perm:'Manage Channels'},
+  {name:'/lockdown',desc:'Lock every text channel',cat:'mod',perm:'Administrator'},
+  {name:'/unlockdown',desc:'Unlock every text channel',cat:'mod',perm:'Administrator'},
+  {name:'/antinuke',desc:'Enable anti-nuke protection',cat:'mod',perm:'Server Owner'},
+  {name:'/antinukethreshold',desc:'Set detection thresholds',cat:'mod',perm:'Server Owner'},
+  {name:'/antinokewhitelist',desc:'Whitelist a trusted user',cat:'mod',perm:'Server Owner'},
+  {name:'/rank',desc:'Check your level, XP and rank',cat:'level',perm:''},
+  {name:'/leaderboard',desc:'View the top 10 XP leaderboard',cat:'level',perm:''},
+  {name:'/setuplevel',desc:'Configure the leveling system',cat:'level',perm:'Manage Guild'},
+  {name:'/setlevelchannel',desc:'Set level-up announcement channel',cat:'level',perm:'Manage Guild'},
+  {name:'/setlevelrole',desc:'Assign a role reward for a level',cat:'level',perm:'Manage Guild'},
+  {name:'/setxp',desc:"Manually set a user's XP",cat:'level',perm:'Manage Guild'},
+  {name:'/resetxp',desc:"Reset a user's XP to zero",cat:'level',perm:'Manage Guild'},
+  {name:'/balance',desc:'Check your coin wallet and bank',cat:'econ',perm:''},
+  {name:'/daily',desc:'Claim daily coins with streak bonus',cat:'econ',perm:''},
+  {name:'/work',desc:'Work to earn coins (1hr cooldown)',cat:'econ',perm:''},
+  {name:'/pay',desc:'Send coins to another member',cat:'econ',perm:''},
+  {name:'/deposit',desc:'Deposit coins into your bank',cat:'econ',perm:''},
+  {name:'/withdraw',desc:'Withdraw coins from your bank',cat:'econ',perm:''},
+  {name:'/rob',desc:"Try to rob someone's wallet",cat:'econ',perm:''},
+  {name:'/shop',desc:'Browse the server shop',cat:'econ',perm:''},
+  {name:'/buyitem',desc:'Buy an item from the shop',cat:'econ',perm:''},
+  {name:'/blackjack',desc:'Play blackjack with your coins',cat:'econ',perm:''},
+  {name:'/richlist',desc:'See the richest members',cat:'econ',perm:''},
+  {name:'/play',desc:'Play a song from YouTube',cat:'music',perm:''},
+  {name:'/skip',desc:'Skip the current song',cat:'music',perm:''},
+  {name:'/pause',desc:'Pause the current song',cat:'music',perm:''},
+  {name:'/resume',desc:'Resume the paused song',cat:'music',perm:''},
+  {name:'/queue',desc:'Show the music queue',cat:'music',perm:''},
+  {name:'/nowplaying',desc:"Show what's currently playing",cat:'music',perm:''},
+  {name:'/stop',desc:'Stop music and disconnect',cat:'music',perm:''},
+  {name:'/volume',desc:'Set the music volume (1–100)',cat:'music',perm:''},
+  {name:'/clearqueue',desc:'Clear all songs from queue',cat:'music',perm:''},
+  {name:'/flipcoin',desc:'Flip a coin — guess heads or tails',cat:'fun',perm:''},
+  {name:'/guessthenumber',desc:'Start a guess the number game',cat:'fun',perm:'Manage Guild'},
+  {name:'/membercount',desc:'Show server member statistics',cat:'fun',perm:''},
+  {name:'/setupqotd',desc:'Set up question of the day',cat:'util',perm:'Manage Guild'},
+  {name:'/qotd',desc:'Post a question of the day now',cat:'util',perm:'Manage Guild'},
+  {name:'/giveaway',desc:'Start a giveaway',cat:'util',perm:'Manage Guild'},
+  {name:'/gend',desc:'End a giveaway early',cat:'util',perm:'Manage Guild'},
+  {name:'/greroll',desc:'Reroll a giveaway winner',cat:'util',perm:'Manage Guild'},
+  {name:'/setupticket',desc:'Set up the ticket system',cat:'util',perm:'Manage Guild'},
+  {name:'/application',desc:'Submit an application',cat:'util',perm:''},
+  {name:'/setbirthday',desc:'Set your birthday',cat:'util',perm:''},
+  {name:'/birthdaylist',desc:'See upcoming birthdays',cat:'util',perm:''},
+  {name:'/afk',desc:'Set yourself as AFK',cat:'util',perm:''},
+  {name:'/help',desc:'Show all bot commands',cat:'util',perm:''},
+  {name:'/resell',desc:'Post a Roblox asset resell listing',cat:'util',perm:''},
+  {name:'/event',desc:'Host a game event',cat:'util',perm:''},
+  {name:'/partnership',desc:'Post a partnership embed',cat:'util',perm:'Manage Guild'},
+  {name:'/addrank',desc:'Add a joinable rank',cat:'util',perm:'Manage Roles'},
+  {name:'/joinrank',desc:'Join a rank role',cat:'util',perm:''},
+];
+
+let ac='all';
+function render(list){
+  const g=document.getElementById('cg');
+  if(!list.length){g.innerHTML='<div style="padding:3rem;color:var(--text2);text-align:center;grid-column:1/-1">No commands found.</div>';return;}
+  g.innerHTML=list.map(c=>`<div class="ccard"><div class="cname">${c.name}</div><div class="cdesc">${c.desc}</div>${c.perm?`<div class="cperm">🔒 ${c.perm}</div>`:''}</div>`).join('');
+}
+function fc(){
+  const q=document.getElementById('cs').value.toLowerCase();
+  render(cmds.filter(c=>(ac==='all'||c.cat===ac)&&(c.name.includes(q)||c.desc.toLowerCase().includes(q))));
+}
+function sc(cat,el){
+  ac=cat;
+  document.querySelectorAll('.ccat').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  fc();
+}
+render(cmds);
+
+// Counters
+function animCount(el){
+  const t=parseInt(el.dataset.target),dur=2000,step=t/(dur/16);
+  let cur=0;
+  const isPercent=el.closest('.stat').querySelector('.lbl').textContent.includes('%');
+  const timer=setInterval(()=>{
+    cur=Math.min(cur+step,t);
+    el.textContent=Math.floor(cur).toLocaleString();
+    if(cur>=t){el.textContent=t.toLocaleString()+(isPercent?'%':'+');clearInterval(timer);}
+  },16);
+}
+const so=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-target]').forEach(animCount);
+      so.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.stats').forEach(el=>so.observe(el));
+
+// Reveal
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
